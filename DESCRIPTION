@@ -1,0 +1,14 @@
+Package: insidecpp11
+Version: 0.0.0.9000
+Title: What the Package Does (One Line, Title Case)
+Description: What the package does (one paragraph).
+Authors@R: c(person("Michael D.","Sumner", role = c("aut", "cre"), email = "mdsumner@gmail.com"))
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.2
+Language: es
+LinkingTo: 
+    cpp11
+SystemRequirements: C++11
