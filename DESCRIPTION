@@ -12,3 +12,5 @@ Language: es
 LinkingTo: 
     cpp11
 SystemRequirements: C++11
+URL: https://github.com/dis-organization/insidecpp11
+BugReports: https://github.com/dis-organization/insidecpp11/issues
