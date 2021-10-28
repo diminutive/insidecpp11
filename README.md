@@ -13,6 +13,8 @@ We are comparing a few ways of implementing this, essentially O’Rourke
 Ch 7 and assuming bbox cull upstream, and ring classification down (for
 hole status).
 
+polyclip or cgal is the fastest
+
 ``` r
 coords = structure(c(0.191915028329653, 0.242440023683676, 
                      0.435140005964137, 0.750039977007818, 0.794689972902072, 

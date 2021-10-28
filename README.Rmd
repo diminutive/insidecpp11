@@ -26,6 +26,7 @@ The goal of insidecpp11 is to do fast point in polygon classification, with cpp1
 
 We are comparing a few ways of implementing this, essentially O'Rourke Ch 7 and assuming bbox cull upstream, and ring classification down (for hole status). 
 
+polyclip or cgal is the fastest 
 
 
 ```{r example}
