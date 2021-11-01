@@ -16,12 +16,22 @@ data("wrld_simpl", package = "maptools")
 sfx <- sf::st_as_sf(wrld_simpl)
 df <- sfheaders::sf_to_df(sfx)
 df$ring_id <- paste(df$multipolygon_id, df$polygon_id, df$linestring_id)
-nn <- 1e4
+nn <- 3e3
 listofcoords <- lapply(split(df[c("x", "y")], df$ring), function(ax) as.matrix(tibble::as_tibble(ax)))
 listofpoints <- lapply(listofcoords, function(mx) cbind(runif(nn, min(mx[,1]), max(mx[,1])),
                                                         runif(nn, min(mx[,2]), max(mx[,2]))))
 
 
+listofx <- split(df$x, df$ring)
+listofy <- split(df$y, df$ring)
+
+wrld_simpl@proj4string@projargs[1] <- NA_character_
+## this seems faster though it wasn't in another test (and we still have to coalesce the rings anyway)
+rbenchmark::benchmark(
+  spover = sp::over(SpatialPoints(pts), as(wrld_simpl, "SpatialPolygons")),
+  clipperlist = insideclipper::inside_clipper_loop(pts, listofx, listofy),
+  replications = 5
+)
 
 rbenchmark::benchmark(
   insidesexp = {for (i in seq_along(listofcoords)) {pts <- listofpoints[[i]]; coords <- listofcoords[[i]];
@@ -33,7 +43,19 @@ rbenchmark::benchmark(
   polyclip = { for (i in seq_along(listofcoords)) {pts <- listofpoints[[i]]; coords <- listofcoords[[i]];polyclip::pointinpolygon(list(x = pts[,1], y = pts[,2]),
                                         list(x = coords[,1], y = coords[,2]))}},
   cgal = { for (i in seq_along(listofcoords)) {pts <- listofpoints[[i]]; coords <- listofcoords[[i]];
-  insidecgal:::point_in_polygon_cgal(pts[,1], pts[,2], coords[,1], coords[,2])}}
+  insidecgal:::point_in_polygon_cgal(pts[,1], pts[,2], coords[,1], coords[,2])}},
+  clipper = { for (i in seq_along(listofcoords)) {pts <- listofpoints[[i]]; coords <- listofcoords[[i]];
+  insideclipper::inside_clipper(pts, coords)}},
 
   ,
   replications = 5)
+
+
+#         test replications elapsed relative user.self sys.self user.child sys.child
+# 4       cgal            5   5.848    1.031     5.851    0.000          0         0
+# 5    clipper            5   5.670    1.000     5.676    0.001          0         0
+# 1 insidesexp            5  18.900    3.333    18.911    0.000          0         0
+# 2   insidesp            5  14.592    2.574    14.607    0.000          0         0
+# 3   polyclip            5   6.632    1.170     6.637    0.000          0         0
+
+
