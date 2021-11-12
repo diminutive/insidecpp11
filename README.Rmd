@@ -18,6 +18,7 @@ knitr::opts_chunk$set(
 # inside
 
 <!-- badges: start -->
+[![R-CMD-check](https://github.com/diminutive/insidecpp11/workflows/R-CMD-check/badge.svg)](https://github.com/diminutive/insidecpp11/actions)
 <!-- badges: end -->
 
 The goal of insidecpp11 is to do fast point in polygon classification, with cpp11. 
@@ -48,3 +49,8 @@ insidecpp11::inside_cpp11(pts, coords)
 
 
 ```
+
+
+## Code of Conduct
+  
+Please note that the insidecpp11 project is released with a [Contributor Code of Conduct](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html). By contributing to this project, you agree to abide by its terms.

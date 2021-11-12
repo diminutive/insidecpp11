@@ -2,16 +2,28 @@
 % Please edit documentation in R/pip.R
 \name{inside_cpp11}
 \alias{inside_cpp11}
-\title{Title}
+\title{Inside with O'Rourke's InPoly}
 \usage{
 inside_cpp11(pts, coords)
 }
 \arguments{
-\item{coords}{}
+\item{pts}{matrix of points 2 columns x,y}
+
+\item{coords}{matrix of polygon ring 2 columns x,y}
 }
 \value{
-
+integer vector of point in polygon status, see Details
 }
 \description{
-Title
+Call the O'Rourke InPoly function with cpp11.
+}
+\details{
+For each query point 'pts', returns one of the following relative to P 'coords':
+0 : is strictly interior to P
+1 : is strictly exterior to P
+3 : is a vertex of P
+2 : lies on the relative interior of an edge of P
+}
+\examples{
+inside_cpp11(matrix(runif(10), ncol = 2), cbind(c(0, .5, .5, 0, 0), c(0, 0, .5, 0, 0)))
 }

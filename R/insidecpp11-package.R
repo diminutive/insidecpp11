@@ -7,4 +7,3 @@
 #' @useDynLib insidecpp11, .registration = TRUE
 ## usethis namespace: end
 NULL
-NULL

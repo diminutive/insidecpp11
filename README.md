@@ -4,6 +4,8 @@
 # inside
 
 <!-- badges: start -->
+
+[![R-CMD-check](https://github.com/diminutive/insidecpp11/workflows/R-CMD-check/badge.svg)](https://github.com/diminutive/insidecpp11/actions)
 <!-- badges: end -->
 
 The goal of insidecpp11 is to do fast point in polygon classification,
@@ -32,3 +34,10 @@ pts <- structure(c(0.193090028221607, 0.134340033623905, 0.194265028113561,
 insidecpp11::inside_cpp11(pts, coords)
 #> [1] 0 0 0 1 1 0 0
 ```
+
+## Code of Conduct
+
+Please note that the insidecpp11 project is released with a [Contributor
+Code of
+Conduct](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html).
+By contributing to this project, you agree to abide by its terms.

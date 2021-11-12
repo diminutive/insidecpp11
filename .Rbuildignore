@@ -1,3 +1,7 @@
-^inside\.Rproj$
+^insidecpp11\.Rproj$
 ^\.Rproj\.user$
 ^README\.Rmd$
+^CODE_OF_CONDUCT\.md$
+^LICENSE\.md$
+^benchmark.R$
+^\.github$

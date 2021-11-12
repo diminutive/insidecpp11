@@ -8,6 +8,14 @@
 \description{
 What the package does (one paragraph).
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/dis-organization/insidecpp11}
+  \item Report bugs at \url{https://github.com/dis-organization/insidecpp11/issues}
+}
+
+}
 \author{
 \strong{Maintainer}: Michael D. Sumner \email{mdsumner@gmail.com}
 
